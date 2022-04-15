@@ -1,11 +1,9 @@
 import ListComponent from './src/components/list.js'
-import { ROUTE_NAMES, ADMIN_GROUP } from './src/consts.js'
+import { ROUTE_NAMES } from './src/consts.js'
 import FORM_CONFIG from './src/formconfig.js'
 
 export function createMenu (user) {
-  return user.groups.indexOf(ADMIN_GROUP) >= 0
-    ? { label: 'články', to: { name: ROUTE_NAMES.list } }
-    : null
+  return { label: 'články', to: { name: ROUTE_NAMES.list } }
 }
 
 export async function setupRoutes (routes, path, cfg, initConfig) {
