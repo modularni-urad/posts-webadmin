@@ -27,18 +27,8 @@ export default {
         </b-button>
       </template>
 
-      <template v-slot:tbody="{ items, fields, doEdit }">
-
-        <tr v-for="row,rowidx in items" :key="rowidx">
-          <td>{{ row.id }}</td>
-          <td>{{ row.title }}</td>
-          <td>{{ row.tags }}</td>
-          <td>{{ row.published | date }}</td>
-          <td>{{ row.author }}</td>
-          <td>{{ row.status }}</td>
-          <Actions key="actions" :doEdit="doEdit" :row="row" :cfg="cfg" />
-        </tr>
-
+      <template v-slot:actions="{ item, cfg, doEdit }">
+        <Actions key="actions" :doEdit="doEdit" :item="item" :cfg="cfg" />
       </template>
 
     </ACListView>

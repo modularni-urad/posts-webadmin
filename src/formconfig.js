@@ -1,3 +1,5 @@
+import tagsField from './components/tags.js'
+
 export default [{
   name: 'id',
   label: "#",
@@ -15,7 +17,7 @@ export default [{
   name: 'tags',
   component: "dyn-input",
   label: 'tagy',
-  fieldcomponent: true, sortable: true
+  fieldcomponent: tagsField, sortable: true
 }, {
   name: 'image',
   component: "dyn-input",
