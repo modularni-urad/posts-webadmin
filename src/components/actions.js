@@ -13,8 +13,10 @@ export default {
         || this.$store.getters.isMember(ADMIN_GROUP)
     },
     muzuPosunout: function () {
-      return (this.item.author === this.$store.getters.UID && this.item.status === 'draft')
-        || (this.$store.getters.isMember(ADMIN_GROUP) && this.item.status !== 'draft')
+      const g = this.$store.getters
+      const item = this.item
+      return (item.author === g.UID.toString() && item.status === 'draft')
+        || (g.isMember(ADMIN_GROUP) && item.status !== 'draft')
     },
     text: function () {
       return this.item.status === 'published' ? 'ODpublikovat' : 'publikovat'
@@ -42,7 +44,7 @@ export default {
         <i class="fas fa-edit"></i> upravit
       </b-button>
       <b-button v-if="muzuPosunout" size="sm" variant="secondary" @click="setState()">
-        <i class="fas fa-edit"></i> {{ text }}
+        <i class="fas" :class="item.status === 'published' ? 'fa-ban' : 'fa-upload'"></i> {{ text }}
       </b-button>
     </b-button-group>
   </td>
